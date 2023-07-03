@@ -1,0 +1,17 @@
+{
+  "name": "electron-calculator-app",
+  "version": "1.0.0",
+  "description": "this is a electron calculator app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Chatzoudas",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^25.2.0"
+  },
+  "dependencies": {
+    "gitignore": "^0.7.0"
+  }
+}

@@ -7,6 +7,9 @@ let input = "";
 // Function to handle the key press event
 function handleKeyPress(event) {
   const keyValue = event.key;
+  if (!isCalculatorButton(keyValue)) {
+    return; // Do nothing if the key is not associated with the calculator buttons
+  }
   handleInput(keyValue);
 }
 
@@ -18,10 +21,10 @@ function handleInput(value) {
     display_output.innerHTML = "";
   } else if (value === "Backspace") {
     input = input.slice(0, -1);
-    display_input.innerHTML = CleanInput(input);
+    display_input.innerHTML = cleanInput(input);
   } else if (value === "=" || value === "Enter") {
-    let result = eval(PrepareInput(input));
-    display_output.innerHTML = CleanOutput(result);
+    let result = eval(prepareInput(input));
+    display_output.innerHTML = cleanOutput(result);
   } else if (value === "(" || value === ")") {
     if (
       value === "(" ||
@@ -29,11 +32,11 @@ function handleInput(value) {
     ) {
       input += value;
     }
-    display_input.innerHTML = CleanInput(input);
+    display_input.innerHTML = cleanInput(input);
   } else {
-    if (ValidateInput(value)) {
+    if (validateInput(value)) {
       input += value;
-      display_input.innerHTML = CleanInput(input);
+      display_input.innerHTML = cleanInput(input);
     }
   }
 }
@@ -49,7 +52,7 @@ for (let key of keys) {
 // Add event listener to handle key presses
 document.addEventListener("keydown", handleKeyPress);
 
-function CleanInput(input) {
+function cleanInput(input) {
   let input_array = input.split("");
   let input_array_length = input_array.length;
 
@@ -74,7 +77,7 @@ function CleanInput(input) {
   return input_array.join("");
 }
 
-function CleanOutput(output) {
+function cleanOutput(output) {
   let output_string = output.toString();
   let decimal = output_string.split(".")[1];
   output_string = output_string.split(".")[0];
@@ -95,7 +98,7 @@ function CleanOutput(output) {
   return output_array.join("");
 }
 
-function ValidateInput(value) {
+function validateInput(value) {
   let last_input = input.slice(-1);
   let operators = ["+", "-", "*", "/"];
 
@@ -114,7 +117,7 @@ function ValidateInput(value) {
   return true;
 }
 
-function PrepareInput(input) {
+function prepareInput(input) {
   let input_array = input.split("");
 
   for (let i = 0; i < input_array.length; i++) {
@@ -124,4 +127,9 @@ function PrepareInput(input) {
   }
 
   return input_array.join("");
+}
+
+function isCalculatorButton(key) {
+  const calculatorButtons = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-", "*", "/", "(", ")", "%", "=", "Enter", "Clear", "Backspace"];
+  return calculatorButtons.includes(key);
 }

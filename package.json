@@ -10,7 +10,7 @@
   "author": "Nick Chatzoudas",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^25.2.0"
+    "electron": "^25.3.0"
   },
   "dependencies": {
     "gitignore": "^0.7.0"

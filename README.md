@@ -6,5 +6,5 @@ npm install electron
 ```
 ## 🛠️ Usage
 ```bash
-npm electron .
+npx electron .
 ```

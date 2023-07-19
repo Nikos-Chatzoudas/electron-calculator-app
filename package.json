@@ -1,19 +1,29 @@
 {
-  "name": "electron-calculator-app",
+  "name": "calculator",
   "version": "1.0.0",
-  "description": "this is a electron calculator app",
+  "description": "This is an Electron calculator app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "author": "Nick Chatzoudas",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^25.3.0"
+    "electron": "^15.0.0"
   },
-  "dependencies": {
-    "gitignore": "^0.7.0"
-  },
-  "keywords": []
+  "dependencies": {},
+  "keywords": [],
+  "build": {
+    "appId": "com.electron.calculator", 
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    }
+   
+  }
 }
